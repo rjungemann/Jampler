@@ -1,0 +1,6 @@
+{
+	"one": "http://localhost:4567/assets/1.wav",
+	"two": "http://localhost:4567/assets/2.wav",
+	"three": "http://localhost:4567/assets/3.wav",
+	"four": "http://localhost:4567/assets/4.wav"
+}

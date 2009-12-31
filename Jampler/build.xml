@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. -->
+<project basedir="." default="build" name="Jampler">
+    <property environment="env"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.6"/>
+    <property name="source" value="1.6"/>
+    <path id="Jampler.classpath">
+        <pathelement location="bin"/>
+        <pathelement location="lib/beads.jar"/>
+        <pathelement location="lib/commons-beanutils-1.8.2.jar"/>
+        <pathelement location="lib/commons-beanutils-1.8.2-javadoc.jar"/>
+        <pathelement location="lib/commons-beanutils-1.8.2-sources.jar"/>
+        <pathelement location="lib/commons-beanutils-bean-collections-1.8.2.jar"/>
+        <pathelement location="lib/commons-beanutils-core-1.8.2.jar"/>
+        <pathelement location="lib/commons-collections-3.2.1.jar"/>
+        <pathelement location="lib/commons-collections-3.2.1-javadoc.jar"/>
+        <pathelement location="lib/commons-collections-3.2.1-sources.jar"/>
+        <pathelement location="lib/commons-collections-testframework-3.2.1.jar"/>
+        <pathelement location="lib/commons-lang-2.4.jar"/>
+        <pathelement location="lib/commons-lang-2.4-javadoc.jar"/>
+        <pathelement location="lib/commons-lang-2.4-sources.jar"/>
+        <pathelement location="lib/commons-logging-1.1.1.jar"/>
+        <pathelement location="lib/commons-logging-1.1.1-javadoc.jar"/>
+        <pathelement location="lib/commons-logging-1.1.1-sources.jar"/>
+        <pathelement location="lib/commons-logging-adapters-1.1.1.jar"/>
+        <pathelement location="lib/commons-logging-api-1.1.1.jar"/>
+        <pathelement location="lib/commons-logging-tests.jar"/>
+        <pathelement location="lib/ezmorph-1.0.6.jar"/>
+        <pathelement location="lib/javaosc.jar"/>
+        <pathelement location="lib/javaoscfull.jar"/>
+        <pathelement location="lib/jl1.0.1.jar"/>
+        <pathelement location="lib/json-lib.jar"/>
+        <pathelement location="lib/junit.jar"/>
+        <pathelement location="lib/mp3spi1.9.4.jar"/>
+        <pathelement location="lib/tritonus_share.jar"/>
+    </path>
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src" excludes="**/*.launch, **/*.java"/>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="bin"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="Jampler.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+    <target name="JavaSampler">
+        <java classname="JavaSampler" failonerror="true" fork="yes">
+            <classpath refid="Jampler.classpath"/>
+        </java>
+    </target>
+    <target name="JavaSampler2">
+        <java classname="JavaSampler2" failonerror="true" fork="yes">
+            <classpath refid="Jampler.classpath"/>
+        </java>
+    </target>
+</project>
