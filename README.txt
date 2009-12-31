@@ -25,7 +25,7 @@ the Ruby Client, and plays audio in response.
 Currently each component needs to be run separately, so you will need three
 separate terminals to run everything.
 
-Make sure the 
+Make sure the $java_home variable is set correctly in the Rakefile.
 
 From the first terminal, open the file server by typing in
 
